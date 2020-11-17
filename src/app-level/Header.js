@@ -7,11 +7,6 @@ const Header = () => {
     return (
       <div className="header-container">
         <img alt='logo' className='logo logo-header' src={logo}/>
-        <button
-        className="cart-button"
-        >
-        Cart
-        </button>
       </div>
     );
   };

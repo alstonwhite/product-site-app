@@ -1,65 +1,65 @@
 const testData = [
     {
-        productTitle: 'Shirt 1',
+        productTitle: 'Product 1 (Group 1)',
         active: true,
-        description: 'Shirt 1 Description',
-        section: 'Shirts',
+        description: 'Product 1 (Group 1) Description',
+        section: 'Product Group 1',
         price: 30.00
     },
     {
-        productTitle: 'Shirt 2',
+        productTitle: 'Product 2 (Group 1)',
         active: true,
-        description: 'Shirt 2 Description',
-        section: 'Shirts',
+        description: 'Product 2 (Group 1) Description',
+        section: 'Product Group 1',
         price: 30.0
     },
     {
-        productTitle: 'Shirt 3',
+        productTitle: 'Product 3 (Group 1)',
         active: true,
-        description: 'Shirt 3 Description',
-        section: 'Shirts',
+        description: 'Product 3 (Group 1) Description',
+        section: 'Product Group 1',
         price: 30
     },
     {
-        productTitle: 'Hoodie 1',
+        productTitle: 'Product 4 (Group 2)',
         active: true,
-        description: 'Hoodie 1 Description',
-        section: 'Hoodies',
+        description: 'Product 4 (Group 2) Description',
+        section: 'Product Group 2',
         price: 50.00
     },
     {
-        productTitle: 'Hoodie 2',
+        productTitle: 'Product 5 (Group 2)',
         active: true,
-        description: 'Hoodie 2 Description',
-        section: 'Hoodies',
+        description: 'Product 5 (Group 2) Description',
+        section: 'Product Group 2',
         price: 50.0
     },
     {
-        productTitle: 'Hoodie 3',
+        productTitle: 'Product 6 (Group 2)',
         active: true,
-        description: 'Hoodie 3 Description',
-        section: 'Hoodies',
+        description: 'Product 6 (Group 2) Description',
+        section: 'Product Group 2',
         price: 50
     },
     {
-        productTitle: 'Hat 1',
+        productTitle: 'Product 7 (Group 3)',
         active: true,
-        description: 'Hat 1 Description',
-        section: 'Hats',
+        description: 'Product 7 (Group 3) Description',
+        section: 'Product Group 3',
         price: 20.00
     },
     {
-        productTitle: 'Hat 2',
+        productTitle: 'Product 8 (Group 3)',
         active: true,
-        description: 'Hat 2 Description',
-        section: 'Hats',
+        description: 'Product 8 (Group 3) Description',
+        section: 'Product Group 3',
         price: 20.0
     },
     {
-        productTitle: 'Hat 3',
+        productTitle: 'Product 9 (Group 3)',
         active: true,
-        description: 'Hat 3 Description',
-        section: 'Hats',
+        description: 'Product 9 (Group 3) Description',
+        section: 'Product Group 3',
         price: 20
     }
   ];

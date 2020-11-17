@@ -10,7 +10,7 @@ import testData from './testData'
 
 function App() {
 
-  const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useState([]);
 
   return (
     <div className="App">
