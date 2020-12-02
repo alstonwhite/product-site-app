@@ -9,7 +9,6 @@ import {
   useParams
 } from "react-router-dom";
 
-
 import Header from '../app-level/Header'
 import NavBar from '../app-level/NavBar'
 import ProductDetail from './ProductDetail';

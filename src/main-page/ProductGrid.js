@@ -11,7 +11,7 @@ import {
 
 import ProductTile from './ProductTile'
 
-const ProductGrid = ({products, filter}) => {
+const ProductGrid = ({products}) => {
 
   const lookup = [
     {
@@ -32,33 +32,19 @@ const ProductGrid = ({products, filter}) => {
     }
   ]
 
-  let filter2 = useParams().group;
-  let filter2Display = filter2 ?
-    lookup.find(x => x.kebab === filter2).display :
+  let filter = useParams().group;
+  let filterDisplay = filter ?
+    lookup.find(x => x.kebab === filter).display :
     "All Products";
 
 
   return (
     <div className="product-grid" id="product-grid">
-      {/* <h1>{filter}</h1>
+      <h1>{filterDisplay}</h1>
       <div className="product-grid-items">
-          {filter === "All Products" ?
+          {filter ?
             products.map(product => (
-              <ProductTile 
-                  product = {product}
-              />))
-            : products.map(product => (
-              product.section === filter &&
-              <ProductTile 
-                  product = {product}
-              />
-          ))}
-      </div> */}
-      <h1>{filter2Display}</h1>
-      <div className="product-grid-items">
-          {filter2 ?
-            products.map(product => (
-              product.section === filter2Display &&
+              product.section === filterDisplay &&
               <ProductTile 
                   product = {product}
               />))
