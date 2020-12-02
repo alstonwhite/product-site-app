@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+  useLocation,
+  useParams
+} from "react-router-dom";
 
 import Header from '../app-level/Header'
 import NavBar from '../app-level/NavBar'
 import ProductGrid from './ProductGrid'
 
-const MainPage = ({products}) => {
+const MainPage = ({products, filter="All Products"}) => {
 
-  const [productFilter, setProductFilter] = useState("All Products");
+  const [productFilter, setProductFilter] = useState(filter);
 
   function filterProducts (filter) {
     setProductFilter(filter);
@@ -17,7 +26,7 @@ const MainPage = ({products}) => {
       <Header/>
       <ProductGrid
         products={products}
-        filter={productFilter}
+        filter={filter}
       />
       <NavBar
         onFilter={filterProducts}

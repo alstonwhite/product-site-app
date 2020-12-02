@@ -1,4 +1,10 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 import logo from '../logo.svg'
 
@@ -6,7 +12,9 @@ const Header = () => {
 
     return (
       <div className="header-container">
-        <img alt='logo' className='logo logo-header' src={logo}/>
+        <Link to="/">
+          <img alt='logo' className='logo logo-header' src={logo}/>
+        </Link>
       </div>
     );
   };
