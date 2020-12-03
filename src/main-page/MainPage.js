@@ -13,7 +13,7 @@ import Header from '../app-level/Header'
 import NavBar from '../app-level/NavBar'
 import ProductGrid from './ProductGrid'
 
-const MainPage = ({products}) => {
+const MainPage = ({products, cart}) => {
 
   return (
     <div className="main-page" id="main-page">
@@ -21,7 +21,9 @@ const MainPage = ({products}) => {
       <ProductGrid
         products={products}
       />
-      <NavBar/>
+      <NavBar
+        cart={cart}
+      />
     </div>
   );
 };

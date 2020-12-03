@@ -15,6 +15,17 @@ import testData from './testData'
 
 function App() {
 
+  const [cart, setCart] = useState([]);
+
+  const addCart= (product) => {
+    console.log("Product:");
+    console.log(product);
+    console.log("Cart:");
+    console.log(cart)
+    setCart([...cart, product])
+    // add qty field to product?
+  }
+
   return (
     <Router>
       <div className="App">
@@ -24,17 +35,21 @@ function App() {
           <Route exact path="/">
             <MainPage
               products={testData}
+              cart={cart}
             />
           </Route>
           <Route path="/category/:group" children={
             <MainPage
               products={testData}
+              cart={cart}
             />
             }>
           </Route>
           <Route path="/product/:id" children={
             <ProductPage
               products={testData}
+              cart={cart}
+              onAdd={addCart}
             />
             }>
           </Route>

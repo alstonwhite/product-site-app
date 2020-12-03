@@ -2,7 +2,7 @@ import React from 'react';
 
 import logo from '../logo.svg';
 
-const ProductDetail = ({product}) => {
+const ProductDetail = ({product, onAdd}) => {
       return (
         <div className="product-detail" id="product-detail">
             <img alt='logo' className='detail-img' src={logo}/>
@@ -15,7 +15,11 @@ const ProductDetail = ({product}) => {
                 <div className="product-description">
                     {product.description}
                 </div>
-                <a href='#' className = "add-cart">
+                <a 
+                    href='#' 
+                    className = "add-cart"
+                    onClick={() => onAdd(product)}
+                >
                     Add to Cart
                 </a>
             </div>
