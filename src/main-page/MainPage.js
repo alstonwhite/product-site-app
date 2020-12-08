@@ -17,7 +17,7 @@ const MainPage = ({products, cart}) => {
 
   return (
     <div className="main-page" id="main-page">
-      <Header/>
+      {/* <Header/> */}
       <ProductGrid
         products={products}
       />

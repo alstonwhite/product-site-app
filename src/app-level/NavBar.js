@@ -7,14 +7,14 @@ import {
 } from "react-router-dom";
 
 const NavBar = ({cart}) => {
-  let cartItems = cart.length;
-  let cartValue = cart ? parseInt(cart.reduce((sum, cur) => sum + cur.price,0)) : 0;
+  let cartItems = cart ? parseInt(cart.reduce((sum, cur) => sum + cur.quantity, 0)) : 0;
+  let cartValue = cart ? parseInt(cart.reduce((sum, cur) => sum + cur.price * cur.quantity, 0)) : 0;
   return (
     <div className="nav-bar" id="nav-bar">
-      <a href='#' className = "nav-cart-content">
+      <Link to="/cart" className = "nav-cart-content">
         <span className = "nav-cart-items">{`Cart: ${cartItems} items / `}</span>
         <span className = "nav-cart-value">{` $${cartValue}`}</span>
-      </a>
+      </Link>
       <ul>
         <li>
           <Link to="/">All Products</Link>

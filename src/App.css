@@ -127,6 +127,44 @@
   color: rgb(70,70,70);
 }
 
+.cart-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-grid-items {
+  border: 1px solid green;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-tile {
+  border: 1px solid blue;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between; 
+}
+
+.cart-tile-link {
+  border: 1px solid red;
+
+  display:flex;
+  align-items: center;
+}
+
+.cart-tile-img {
+  height: 100px;
+}
+
+.cart-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+}
+
 .nav-bar {
   border: 1px solid red;
 

@@ -21,7 +21,7 @@ const ProductPage = ({products, cart, onAdd}) => {
   
   return (
     <div className="product-page" id="product-page">
-      <Header/>
+      {/* <Header/> */}
       <ProductDetail 
         product={product}
         onAdd={onAdd}

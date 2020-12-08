@@ -31,6 +31,7 @@ const ProductGrid = ({products}) => {
       kebab: "product-group-4"
     }
   ]
+  // add slug (kebab) to testData, lookup against that array
 
   let filter = useParams().group;
   let filterDisplay = filter ?

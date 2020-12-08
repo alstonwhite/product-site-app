@@ -17,11 +17,12 @@ const ProductDetail = ({product, onAdd}) => {
                 </div>
                 <a 
                     href='#' 
-                    className = "add-cart"
-                    onClick={() => onAdd(product)}
+                    className="add-cart"
+                    onClick={()=>onAdd(product)}
                 >
                     Add to Cart
                 </a>
+                {/* change to button? */}
             </div>
         </div>
       );

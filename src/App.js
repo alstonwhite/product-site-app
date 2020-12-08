@@ -7,8 +7,10 @@ import {
 } from "react-router-dom";
 import './App.css';
 
+import Header from './app-level/Header'
 import MainPage from './main-page/MainPage'
 import ProductPage from './product-page/ProductPage'
+import CartPage from './cart-page/CartPage'
 
 import testData from './testData'
 
@@ -17,18 +19,31 @@ function App() {
 
   const [cart, setCart] = useState([]);
 
-  const addCart= (product) => {
-    console.log("Product:");
-    console.log(product);
-    console.log("Cart:");
-    console.log(cart)
-    setCart([...cart, product])
-    // add qty field to product?
+  const addItemCart= (product) => {
+    if (cart.find(x => x.id === product.id)) {
+      cart.find(x => x.id === product.id).quantity++;
+      setCart([...cart])
+    } else {
+      product.quantity = 1;
+      setCart([...cart, product]);
+    }
   }
+
+  const updateQtyCart = (product, qty) => {
+    cart[cart.findIndex(x => x.id === product.id)].quantity = qty;
+    setCart([...cart])
+  }
+
+  const removeItemCart = (product) => {
+    let newCart = cart.filter(x => x.id !== product.id);
+    setCart(newCart);
+  }
+
 
   return (
     <Router>
       <div className="App">
+        <Header/>
       </div>
 
       <Switch>
@@ -49,9 +64,16 @@ function App() {
             <ProductPage
               products={testData}
               cart={cart}
-              onAdd={addCart}
+              onAdd={addItemCart}
             />
             }>
+          </Route>
+          <Route exact path="/cart">
+            <CartPage
+              cart={cart}
+              onUpdate={updateQtyCart}
+              onRemove={removeItemCart}
+            />
           </Route>
         </Switch>
 

@@ -25,5 +25,3 @@ const ProductTile = ({product}) => {
   };
   
   export default ProductTile;
-
-  // 
