@@ -9,11 +9,12 @@ import {
 import logo from '../logo.svg';
 
 const CartTile = ({product, onUpdate, onRemove}) => {
+    
     return (
       <div className="cart-tile" id="cart-tile">
         <Link className="cart-tile-link" to={`/product/${product.id}`}>  
           <img alt='logo' className='cart-tile-img' src={logo}/>
-          <div className="product-name">{product.productTitle}</div>  
+          <div className="product-name">{product.title}</div>  
           <div className="product-price">
               <span>$</span>
               {product.price}

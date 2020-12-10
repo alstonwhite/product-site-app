@@ -7,8 +7,10 @@ import {
 } from "react-router-dom";
 
 const NavBar = ({cart}) => {
-  let cartItems = cart ? parseInt(cart.reduce((sum, cur) => sum + cur.quantity, 0)) : 0;
-  let cartValue = cart ? parseInt(cart.reduce((sum, cur) => sum + cur.price * cur.quantity, 0)) : 0;
+
+  let cartItems = cart ? cart.reduce((sum, cur) => sum + cur.quantity, 0) : 0;
+  let cartValue = cart ? cart.reduce((sum, cur) => sum + cur.price * cur.quantity, 0) : 0;
+
   return (
     <div className="nav-bar" id="nav-bar">
       <Link to="/cart" className = "nav-cart-content">
@@ -27,9 +29,6 @@ const NavBar = ({cart}) => {
         </li>
         <li>
           <Link to="/category/product-group-3">Product Group 3</Link>
-        </li>
-        <li>
-          <Link to="/category/product-group-4">Product Group 4</Link>
         </li>
       </ul>
     </div>

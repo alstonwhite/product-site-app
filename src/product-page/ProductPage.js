@@ -17,11 +17,10 @@ import ProductDetail from './ProductDetail';
 const ProductPage = ({products, cart, onAdd}) => {
   
   let params = useParams();
-  let product = products.find(p => p.id === parseInt(params.id));
+  let product = products.find(p => p.id === params.id);
   
   return (
     <div className="product-page" id="product-page">
-      {/* <Header/> */}
       <ProductDetail 
         product={product}
         onAdd={onAdd}
