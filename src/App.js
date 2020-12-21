@@ -15,54 +15,29 @@ import CartPage from './cart-page/CartPage'
 import fetchContentful from "./fetchContentful";
 
 import { addItemCartR, upDateQtyCartR, removeItemCartR } from './redux/actions';
+import { loadCartState, saveCartState } from './cookies';
 
 
 function App() {
 
   const [products, setProducts] = useState([]);
-  // const [cart, setCart] = useState([]);
   const cartR = useSelector(state => state.cart); 
   const dispatch = useDispatch();
 
   const addItemCart= (product) => {
-    // if (cart.find(x => x.id === product.id)) {
-    //   cart.find(x => x.id === product.id).quantity++;
-    //   setCart([...cart])
-    //   document.cookie = ("cart",JSON.stringify(cart));
-    // } else {
-    //   product.quantity = 1;
-    //   let newCart = [...cart, product]; 
-    //   setCart(newCart);
-    //   document.cookie = ("cart",JSON.stringify(newCart))
-    // }
-    dispatch(addItemCartR(product))
-    document.cookie = ("cart",JSON.stringify(cartR))
+    dispatch(addItemCartR(product));
   }
 
   const updateQtyCart = (product, qty) => {
-    // cart[cart.findIndex(x => x.id === product.id)].quantity = parseInt(qty);
-    // setCart([...cart]);
-    // document.cookie = ("cart",JSON.stringify(cart));
-    dispatch(upDateQtyCartR(product, qty))
-    document.cookie = ("cart",JSON.stringify(cartR))
+    dispatch(upDateQtyCartR(product, qty));
   }
 
   const removeItemCart = (product) => {
-    // let newCart = cart.filter(x => x.id !== product.id);
-    // setCart(newCart);
-    // document.cookie = ("cart",JSON.stringify(newCart));
-    dispatch(removeItemCartR(product))
-    document.cookie = ("cart",JSON.stringify(cartR))
+    dispatch(removeItemCartR(product));
   }
-
-  // helper function to find product
-  // helper function to update / pull cookie
 
 
   useEffect(() => {
-    // if (document.cookie) {
-    //   setCart(JSON.parse(document.cookie));
-    // }
     const products = [];
     fetchContentful("product").then(entries => {
       entries.forEach(entry => {
@@ -84,8 +59,8 @@ function App() {
       <div className="App">
         <button
           onClick={() => {
-            document.cookie=("cart",JSON.stringify([]))
-            console.log(document.cookie)
+            document.cookie=("cart",JSON.stringify({cart:[]}))
+            console.log(JSON.parse(document.cookie))
           }}  
         >
         Clear Cookies
@@ -96,14 +71,12 @@ function App() {
       <Switch>
           <Route exact path="/">
             <MainPage
-              // products={testData}
               products={products}
               cart={cartR}
             />
           </Route>
           <Route path="/category/:group" children={
             <MainPage
-              // products={testData}
               products={products}
               cart={cartR}
             />
@@ -111,7 +84,6 @@ function App() {
           </Route>
           <Route path="/product/:id" children={
             <ProductPage
-              // products={testData}
               products={products}
               cart={cartR}
               onAdd={addItemCart}

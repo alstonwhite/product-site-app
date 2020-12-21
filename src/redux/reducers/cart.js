@@ -1,13 +1,14 @@
 import { CART_ADD, CART_UPDATE, CART_REMOVE } from '../actionTypes';
 
-// const initState = document.cookie ? {cart: JSON.parse(document.cookie)} : {cart: []}
-// not pulling most recent cart addition ?
-const initState = [];
+const initState = {cart: []};
 
 export default (state = initState, action) => {
     switch (action.type){
         case CART_ADD:
+            console.log("action.payload:")
             console.log(action.payload)
+            console.log("state:")
+            console.log(state)
             if (state.cart.find(x => x.id === action.payload.id)) {
                 state.cart.find(x => x.id === action.payload.id).quantity++;
                 return {...state, cart: [...state.cart]}
