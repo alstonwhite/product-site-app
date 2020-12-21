@@ -5,6 +5,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import './App.css';
 
 import Header from './app-level/Header'
@@ -13,58 +14,65 @@ import ProductPage from './product-page/ProductPage'
 import CartPage from './cart-page/CartPage'
 import fetchContentful from "./fetchContentful";
 
-import testData from './testData'
+import { addItemCartR, upDateQtyCartR, removeItemCartR } from './redux/actions';
 
 
 function App() {
 
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useState([]);
+  const cartR = useSelector(state => state.cart); 
+  const dispatch = useDispatch();
 
   const addItemCart= (product) => {
-    if (cart.find(x => x.id === product.id)) {
-      cart.find(x => x.id === product.id).quantity++;
-      setCart([...cart])
-      document.cookie = ("cart",JSON.stringify(cart))
-      // console.log(document.cookie);
-    } else {
-      product.quantity = 1;
-      let newCart = [...cart, product]; 
-      setCart(newCart);
-      document.cookie = ("cart",JSON.stringify(newCart))
-      // console.log(document.cookie);
-    }
+    // if (cart.find(x => x.id === product.id)) {
+    //   cart.find(x => x.id === product.id).quantity++;
+    //   setCart([...cart])
+    //   document.cookie = ("cart",JSON.stringify(cart));
+    // } else {
+    //   product.quantity = 1;
+    //   let newCart = [...cart, product]; 
+    //   setCart(newCart);
+    //   document.cookie = ("cart",JSON.stringify(newCart))
+    // }
+    dispatch(addItemCartR(product))
+    document.cookie = ("cart",JSON.stringify(cartR))
   }
 
   const updateQtyCart = (product, qty) => {
-    cart[cart.findIndex(x => x.id === product.id)].quantity = parseInt(qty);
-    setCart([...cart]);
-    document.cookie = ("cart",JSON.stringify(cart));
-    // console.log(document.cookie);
+    // cart[cart.findIndex(x => x.id === product.id)].quantity = parseInt(qty);
+    // setCart([...cart]);
+    // document.cookie = ("cart",JSON.stringify(cart));
+    dispatch(upDateQtyCartR(product, qty))
+    document.cookie = ("cart",JSON.stringify(cartR))
   }
 
   const removeItemCart = (product) => {
-    let newCart = cart.filter(x => x.id !== product.id);
-    setCart(newCart);
-    document.cookie = ("cart",JSON.stringify(newCart));
-    // console.log(document.cookie);
+    // let newCart = cart.filter(x => x.id !== product.id);
+    // setCart(newCart);
+    // document.cookie = ("cart",JSON.stringify(newCart));
+    dispatch(removeItemCartR(product))
+    document.cookie = ("cart",JSON.stringify(cartR))
   }
 
+  // helper function to find product
+  // helper function to update / pull cookie
+
+
   useEffect(() => {
-    if (document.cookie) {
-      // console.log(JSON.parse(document.cookie));
-      setCart(JSON.parse(document.cookie));
-    }
+    // if (document.cookie) {
+    //   setCart(JSON.parse(document.cookie));
+    // }
     const products = [];
     fetchContentful("product").then(entries => {
       entries.forEach(entry => {
         if(entry.sys.contentType.sys.id==="product" && entry.fields.active) {
           entry.fields.id = entry.sys.id
           products.push(entry.fields);
+          // add it field to contentful "fields"
         }
       })
       // change order of items in array?
-      // console.log(products);
       setProducts(products);
     });
   }, []);
@@ -90,14 +98,14 @@ function App() {
             <MainPage
               // products={testData}
               products={products}
-              cart={cart}
+              cart={cartR}
             />
           </Route>
           <Route path="/category/:group" children={
             <MainPage
               // products={testData}
               products={products}
-              cart={cart}
+              cart={cartR}
             />
             }>
           </Route>
@@ -105,14 +113,14 @@ function App() {
             <ProductPage
               // products={testData}
               products={products}
-              cart={cart}
+              cart={cartR}
               onAdd={addItemCart}
             />
             }>
           </Route>
           <Route exact path="/cart">
             <CartPage
-              cart={cart}
+              cart={cartR}
               onUpdate={updateQtyCart}
               onRemove={removeItemCart}
             />
