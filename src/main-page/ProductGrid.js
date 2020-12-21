@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useHistory,
-  useLocation,
-  useParams
-} from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import ProductTile from './ProductTile'
 
@@ -17,7 +9,6 @@ const ProductGrid = ({products}) => {
   let filterDisplay = filter ?
     products.find(x => x.sectionSlug === filter).section :
     "All Products";
-
 
   return (
     <div className="product-grid" id="product-grid">

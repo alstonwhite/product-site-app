@@ -1,20 +1,11 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useHistory,
-  useLocation,
-  useParams
-} from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-import Header from '../app-level/Header'
 import NavBar from '../app-level/NavBar'
 import ProductDetail from './ProductDetail';
 
 
-const ProductPage = ({products, cart, onAdd}) => {
+const ProductPage = ({products, onAdd}) => {
   
   let params = useParams();
   let product = products.find(p => p.id === params.id);
@@ -25,9 +16,7 @@ const ProductPage = ({products, cart, onAdd}) => {
         product={product}
         onAdd={onAdd}
       />
-      <NavBar
-        cart={cart}
-      />
+      <NavBar/>
     </div>
   );
 };

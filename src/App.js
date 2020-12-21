@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import './App.css';
 
 import Header from './app-level/Header'
@@ -15,13 +14,11 @@ import CartPage from './cart-page/CartPage'
 import fetchContentful from "./fetchContentful";
 
 import { addItemCartR, upDateQtyCartR, removeItemCartR } from './redux/actions';
-import { loadCartState, saveCartState } from './cookies';
 
 
 function App() {
 
   const [products, setProducts] = useState([]);
-  const cartR = useSelector(state => state.cart); 
   const dispatch = useDispatch();
 
   const addItemCart= (product) => {
@@ -72,27 +69,23 @@ function App() {
           <Route exact path="/">
             <MainPage
               products={products}
-              cart={cartR}
             />
           </Route>
           <Route path="/category/:group" children={
             <MainPage
               products={products}
-              cart={cartR}
             />
             }>
           </Route>
           <Route path="/product/:id" children={
             <ProductPage
               products={products}
-              cart={cartR}
               onAdd={addItemCart}
             />
             }>
           </Route>
           <Route exact path="/cart">
             <CartPage
-              cart={cartR}
               onUpdate={updateQtyCart}
               onRemove={removeItemCart}
             />

@@ -1,13 +1,10 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const NavBar = ({cart}) => {
+const NavBar = () => {
 
+  const cart = useSelector(state => state.cart); 
   let cartItems = cart ? cart.reduce((sum, cur) => sum + cur.quantity, 0) : 0;
   let cartValue = cart ? cart.reduce((sum, cur) => sum + cur.price * cur.quantity, 0) : 0;
 

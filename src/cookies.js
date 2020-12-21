@@ -1,5 +1,5 @@
 export const loadCartState = () => {
-    // cookie name ("cart") should be specified as input
+    // cookie name ("cart") should be specified as input ?
     try {
         const serializedState = document.cookie;
         if (serializedState === null) {

@@ -1,25 +1,16 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useHistory,
-  useLocation,
-  useParams
-} from "react-router-dom";
 
-import NavBar from '../app-level/NavBar'
 import CartTile from './CartTile'
+import { useSelector } from "react-redux";
 
-const CartPage = ({cart, onUpdate, onRemove}) => {
+const CartPage = ({onUpdate, onRemove}) => {
 
+    const cart = useSelector(state => state.cart); 
     let cartValue = cart ? parseInt(cart.reduce((sum, cur) => sum + cur.price * cur.quantity, 0)) : 0;
 
     return (
         <div className="cart-page" id="cart-page">
             <h1>Cart</h1>
-            {/* align header with other pages */}
             <div className="cart-grid-items">
                 {cart.map(product => (
                     <CartTile 
