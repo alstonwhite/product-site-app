@@ -12,11 +12,11 @@ const ProductPage = ({products, onAdd}) => {
   
   return (
     <div className="product-page" id="product-page">
+      <NavBar/>
       <ProductDetail 
         product={product}
         onAdd={onAdd}
       />
-      <NavBar/>
     </div>
   );
 };

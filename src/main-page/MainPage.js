@@ -7,10 +7,10 @@ const MainPage = ({products}) => {
 
   return (
     <div className="main-page" id="main-page">
+      <NavBar/>
       <ProductGrid
         products={products}
       />
-      <NavBar/>
     </div>
   );
 };

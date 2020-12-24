@@ -11,7 +11,7 @@ const CartPage = ({onUpdate, onRemove}) => {
     return (
         <div className="cart-page" id="cart-page">
             <h1>Cart</h1>
-            <div className="cart-grid-items">
+            <div className="cart-grid__items">
                 {cart.map(product => (
                     <CartTile 
                         product={product}
@@ -20,13 +20,13 @@ const CartPage = ({onUpdate, onRemove}) => {
                     />
                 ))}
             </div>
-            <div className="cart-footer">
-                <div className="cart-value">
+            <div className="cart-page__footer">
+                <div className="cart-page__footer__value">
                     {`Total: $${cartValue}`}
                 </div>
                 <a 
                     href='#' 
-                    className ="add-cart"
+                    className ="button cart-page__footer__checkout"
                     // onClick={() => checkout()}
                 >
                     Checkout

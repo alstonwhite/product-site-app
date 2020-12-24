@@ -13,7 +13,7 @@ const ProductGrid = ({products}) => {
   return (
     <div className="product-grid" id="product-grid">
       <h1>{filterDisplay}</h1>
-      <div className="product-grid-items">
+      <div className="product-grid__items">
           {filter ?
             products && products.map(product => (
               product.section === filterDisplay &&

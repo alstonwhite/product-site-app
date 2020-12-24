@@ -6,19 +6,19 @@ const ProductDetail = ({product, onAdd}) => {
 
       return (
         <div className="product-detail" id="product-detail">
-            <img alt='logo' className='detail-img' src={logo}/>
-            <div className='product-info'>
-                <div className="product-name">{product.title}</div>
-                <div className="product-price">
+            <img alt='logo' className="product-detail__img" src={logo}/>
+            <div className='product-detail__content'>
+                <div className="product-detail__content__name">{product.title}</div>
+                <div className="product-detail__content__price">
                     <span>$</span>
                     {product.price}
                 </div>
-                <div className="product-description">
+                <div className="product-detail__content__description">
                     {product.description}
                 </div>
                 <a 
                     href='#' 
-                    className="add-cart"
+                    className="product-detail__content__add-cart"
                     onClick={()=>onAdd(product)}
                 >
                     Add to Cart
