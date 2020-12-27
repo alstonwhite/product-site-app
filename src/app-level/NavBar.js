@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -8,10 +8,20 @@ const NavBar = () => {
   let cartItems = cart ? cart.reduce((sum, cur) => sum + cur.quantity, 0) : 0;
   let cartValue = cart ? cart.reduce((sum, cur) => sum + cur.price * cur.quantity, 0) : 0;
 
+  const [open, setOpen] = useState(false); 
+
   return (
     <div className="nav">
+      <button 
+        aria-expanded={open} 
+        aria-controls="nav-list"
+        onClick={()=>setOpen(!open)}  
+      >
+        <span class="open">☰</span>
+        <span class="close">×</span>
+        Menu
+      </button>
       <Link to="/cart" className = "nav__cart-content">
-        {/* Cart logo instead of "cart" */}
         <div className = "nav__cart-items">{`Cart: ${cartItems} items`}</div>
         <div className = "nav__cart-value">{` $${cartValue}`}</div>
       </Link>

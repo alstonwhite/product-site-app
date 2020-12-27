@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import './App.css';
 
 import Header from './app-level/Header'
+import NavBar from './app-level/NavBar'
 import MainPage from './main-page/MainPage'
 import ProductPage from './product-page/ProductPage'
 import CartPage from './cart-page/CartPage'
@@ -33,7 +34,6 @@ function App() {
     dispatch(removeItemCartR(product));
   }
 
-
   useEffect(() => {
     const products = [];
     fetchContentful("product").then(entries => {
@@ -54,16 +54,15 @@ function App() {
 
     <Router>
       <div className="App">
-        <button
+        {/* <button
           onClick={() => {
             document.cookie=("cart",JSON.stringify({cart:[]}))
             console.log(JSON.parse(document.cookie))
           }}  
         >
         Clear Cookies
-        </button>
+        </button> */}
         <Header/>
-      </div>
 
       <Switch>
           <Route exact path="/">
@@ -91,8 +90,8 @@ function App() {
             />
           </Route>
         </Switch>
-
-      </Router>
+      </div>
+    </Router>
   );
 }
 
