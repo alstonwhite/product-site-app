@@ -6,7 +6,7 @@ const ProductDetail = ({product, onAdd}) => {
 
       return (
         <div className="product-detail" id="product-detail">
-            <img alt='logo' className="product-detail__img" src={logo}/>
+            <img alt='logo' className="product-detail__img" src={product.image1 ? product.image1.fields.file.url : logo}/>
             <div className='product-detail__content'>
                 <div className="product-detail__content__name">{product.title}</div>
                 <div className="product-detail__content__price">

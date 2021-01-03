@@ -3,11 +3,13 @@ import React from 'react';
 import NavBar from '../app-level/NavBar'
 import ProductGrid from './ProductGrid'
 
-const MainPage = ({products}) => {
+const MainPage = ({products, sections}) => {
 
   return (
     <div className="main-page" id="main-page">
-      <NavBar/>
+      <NavBar
+        sections={sections}
+      />
       <ProductGrid
         products={products}
       />

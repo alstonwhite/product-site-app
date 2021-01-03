@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const NavBar = () => {
+const NavBar = ({sections}) => {
 
   const cart = useSelector(state => state.cart); 
   let cartItems = cart ? cart.reduce((sum, cur) => sum + cur.quantity, 0) : 0;
@@ -38,6 +38,16 @@ const NavBar = () => {
         <li>
           <Link to="/category/product-group-3" className = "nav__item">Product Group 3</Link>
         </li>
+        {sections && sections.map(section => (
+          <li>
+            <Link
+                to={"/category/"+section.slug}
+                className = "nav__item"
+            >
+              {section.sectionTitle}
+            </Link>
+          </li>
+        ))}
       </ul>
     </div>
     );

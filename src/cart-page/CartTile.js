@@ -8,7 +8,7 @@ const CartTile = ({product, onUpdate, onRemove}) => {
     return (
       <div className="cart-tile" id="cart-tile">
         <Link className="cart-tile__content" to={`/product/${product.id}`}>  
-          <img alt='logo' className='cart-tile__content__img' src={logo}/>
+          <img alt='logo' className='cart-tile__content__img' src={product.image1 ? product.image1.fields.file.url : logo}/>
           <div className="cart-tile__content__name">{product.title}</div>  
           <div className="cart-tile__content__price">
               <span>$</span>

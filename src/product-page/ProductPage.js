@@ -5,14 +5,16 @@ import NavBar from '../app-level/NavBar'
 import ProductDetail from './ProductDetail';
 
 
-const ProductPage = ({products, onAdd}) => {
+const ProductPage = ({products, sections, onAdd}) => {
   
   let params = useParams();
   let product = products.find(p => p.id === params.id);
   
   return (
     <div className="product-page" id="product-page">
-      <NavBar/>
+      <NavBar
+        sections={sections}
+      />
       <ProductDetail 
         product={product}
         onAdd={onAdd}
