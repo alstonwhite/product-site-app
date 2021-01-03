@@ -8,7 +8,6 @@ import { useDispatch } from "react-redux";
 import './App.css';
 
 import Header from './app-level/Header'
-import NavBar from './app-level/NavBar'
 import MainPage from './main-page/MainPage'
 import ProductPage from './product-page/ProductPage'
 import CartPage from './cart-page/CartPage'
@@ -53,7 +52,6 @@ function App() {
       // change order of items in array?
       setProducts(products);
       setSections(sections);
-      console.log(products[0].image1.fields.file.url);
     });
   }, []);
 

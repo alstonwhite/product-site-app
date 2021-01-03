@@ -107,9 +107,13 @@
   grid-area: main-content;
   
   display: grid;
-  grid-template-columns: 400px 1fr;
+  grid-template-columns: 2fr 3fr;
   align-items: top;
   text-decoration: none;
+}
+
+.product-detail__img {
+  max-width: 100%;
 }
 
 .product-detail__content {
@@ -175,7 +179,8 @@
 }
 
 .cart-tile__content__img {
-  height: 100px;
+  min-width: 200px;
+  max-width: 25%;
 }
 
 .cart-tile__action {
