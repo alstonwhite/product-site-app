@@ -15,7 +15,6 @@ import fetchContentful from "./fetchContentful";
 
 import { addItemCartR, upDateQtyCartR, removeItemCartR } from './redux/actions';
 
-
 function App() {
 
   const [products, setProducts] = useState([]);
@@ -64,7 +63,7 @@ function App() {
 
     <Router>
       <div className="App">
-        {/* <div className="background" dangerouslySetInnerHTML={iframe()}></div> */}
+        <div className="background" dangerouslySetInnerHTML={iframe()}></div>
         {/* <button
           onClick={() => {
             document.cookie=("cart",JSON.stringify({cart:[]}))

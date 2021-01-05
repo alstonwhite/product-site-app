@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-import logo from '../particle-logo.jpeg'
+import logo from '../particle-logo.png'
 
 const Header = () => {
 
