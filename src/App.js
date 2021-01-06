@@ -56,7 +56,7 @@ function App() {
 
   // youtube video background
   const iframe = () => {
-    return {__html: '<iframe frameborder="0" height="100%" width="100%" src="https://www.youtube.com/embed/Hy3S2coYvo8?controls=0&autoplay=1&disablekb=1&loop=1&mute=1" frameborder="0"></iframe>'}
+    return {__html: '<iframe frameborder="0" height="100%" width="100%" src="https://www.youtube.com/embed/Hy3S2coYvo8?controls=0&autoplay=1&loop=1&mute=1" frameborder="0"></iframe>'}
   }
 
   return (
@@ -64,16 +64,7 @@ function App() {
     <Router>
       <div className="App">
         <div className="background" dangerouslySetInnerHTML={iframe()}></div>
-        {/* <button
-          onClick={() => {
-            document.cookie=("cart",JSON.stringify({cart:[]}))
-            console.log(JSON.parse(document.cookie))
-          }}  
-        >
-        Clear Cookies
-        </button> */}
         <Header/>
-
       <Switch>
           <Route exact path="/">
             <MainPage

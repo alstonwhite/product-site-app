@@ -21,7 +21,7 @@ const NavBar = ({sections}) => {
         <span class="close">×</span>
         Menu
       </button>
-      <Link to="/cart" className = "nav__cart-content">
+      <Link to="/cart" className = "nav__cart-content btn">
         <div className = "nav__cart-items">{`Cart: ${cartItems} items`}</div>
         <div className = "nav__cart-value">{` $${cartValue}`}</div>
       </Link>

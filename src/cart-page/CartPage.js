@@ -10,7 +10,6 @@ const CartPage = ({onUpdate, onRemove}) => {
 
     const cart = useSelector(state => state.cart); 
     let cartValue = cart ? parseInt(cart.reduce((sum, cur) => sum + cur.price * cur.quantity, 0)) : 0;
-    console.log(cart)
 
     useEffect(() => {
         if (window.Stripe) setStripe(window.Stripe(stripeToken))
@@ -45,7 +44,7 @@ const CartPage = ({onUpdate, onRemove}) => {
                     {`Total: $${cartValue}`}
                 </div>
                 <button
-                    className ="button cart-page__footer__checkout"
+                    className ="cart-page__footer__checkout btn"
                     onClick={checkout}
                 >
                     Checkout

@@ -40,7 +40,7 @@ const ProductDetail = ({product, onAdd}) => {
                 </div>
                 <a 
                     href='#' 
-                    className="product-detail__content__add-cart"
+                    className="product-detail__content__add-cart btn"
                     onClick={()=>onAdd(product)}
                 >
                     Add to Cart
