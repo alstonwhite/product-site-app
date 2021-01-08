@@ -15,10 +15,14 @@ const ProductPage = ({products, sections, onAdd}) => {
       <NavBar
         sections={sections}
       />
-      <ProductDetail 
+      {product && <ProductDetail 
         product={product}
         onAdd={onAdd}
-      />
+      />}
+      {/* <ProductDetail 
+        product={product}
+        onAdd={onAdd}
+      /> */}
     </div>
   );
 };

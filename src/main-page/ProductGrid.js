@@ -6,17 +6,18 @@ import ProductTile from './ProductTile'
 const ProductGrid = ({products}) => {
 
   let filter = useParams().group;
-  let filterDisplay = filter ?
-    products.find(x => x.sectionSlug === filter).section :
-    "All Products";
 
   return (
     <div className="product-grid" id="product-grid">
-      <h1 className="product-grid__header">{filterDisplay}</h1>
+      <h1 className="product-grid__header">
+        {products[0] && 
+        filter ? products.find(x => x.sectionSlug === filter).section : 
+        "All Products"}
+      </h1>
       <div className="product-grid__items">
           {filter ?
             products && products.map(product => (
-              product.section === filterDisplay &&
+              product.sectionSlug === filter &&
               <ProductTile 
                   product = {product}
               />))

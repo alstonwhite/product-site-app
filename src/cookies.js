@@ -17,8 +17,12 @@ export const loadCartState = () => {
 
 export const saveCartState = (state) => {
     try {
-        document.cookie = ("cart",JSON.stringify(state));
+        console.log("Previous cookie");
+        console.log(JSON.parse(document.cookie));
+        document.cookie = (JSON.stringify(state));
         console.log("Cookie written");
+        console.log(state);
+        console.log(JSON.parse(document.cookie));
     } catch {
         console.log("Write cookie error");
     }

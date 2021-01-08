@@ -48,7 +48,7 @@ function App() {
           sections.push(entry.fields);
         }
       })
-      // change order of items in array?
+      // change order of items in array
       setProducts(products);
       setSections(sections);
     });

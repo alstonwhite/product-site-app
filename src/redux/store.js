@@ -17,5 +17,3 @@ store.subscribe(() => {
 
 
 export default store;
-
-// export default createStore(rootReducer, {cart: JSON.parse(document.cookie)});
