@@ -13,13 +13,13 @@ const NavBar = ({sections}) => {
   return (
     <div className="nav">
       <button 
+        className="nav-hamburger btn"
         aria-expanded={open} 
         aria-controls="nav-list"
         onClick={()=>setOpen(!open)}  
       >
-        <span class="open">☰</span>
-        <span class="close">×</span>
-        Menu
+        <span className="open">☰ Menu</span>
+        <span className="close">x Menu</span>
       </button>
       <Link to="/cart" className = "nav__cart-content btn">
         <div className = "nav__cart-items">{`Cart: ${cartItems} items`}</div>
@@ -28,15 +28,6 @@ const NavBar = ({sections}) => {
       <ul>
         <li>
           <Link to="/" className = "nav__item">All Products</Link>
-        </li>
-        <li>
-          <Link to="/category/product-group-1" className = "nav__item">Product Group 1</Link>
-        </li>
-        <li>
-          <Link to="/category/product-group-2" className = "nav__item">Product Group 2</Link>
-        </li>
-        <li>
-          <Link to="/category/product-group-3" className = "nav__item">Product Group 3</Link>
         </li>
         {sections && sections.map(section => (
           <li>

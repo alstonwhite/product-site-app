@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import logo from '../logo.svg';
 
 const CartTile = ({product, onUpdate, onRemove}) => {
+
+  const validateInput = (input)  => {
+    return input>=0 ? input : 1;
+  }
     
     return (
       <div className="cart-tile" id="cart-tile">
@@ -20,8 +24,17 @@ const CartTile = ({product, onUpdate, onRemove}) => {
             <input 
                 className="cart-tile__action__qty"
                 type="number"
+                min="0"
+                step="1"
                 defaultValue={product.quantity}
-                onChange={event=>onUpdate(product,event.target.value)}
+                onChange={e => {
+                    console.log("event target val", e.target.value)
+                    let validInput = validateInput(e.target.value)
+                    console.log("valid input", validInput)
+                    e.target.value = validInput}
+                    // onUpdate(product,validInput)}
+                  }
+                onInputChange={e => onUpdate(product, e.target.value)}
             />
             <button
                 className="cart-tile__action__remove"

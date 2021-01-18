@@ -11,13 +11,13 @@ const ProductGrid = ({products}) => {
     <div className="product-grid" id="product-grid">
       <h1 className="product-grid__header">
         {products[0] && 
-        filter ? products.find(x => x.sectionSlug === filter).section : 
+        filter ? products.find(x => x.productSection.fields.slug === filter).productSection.fields.sectionTitle : 
         "All Products"}
       </h1>
       <div className="product-grid__items">
           {filter ?
             products && products.map(product => (
-              product.sectionSlug === filter &&
+              product.productSection.fields.slug === filter &&
               <ProductTile 
                   product = {product}
               />))

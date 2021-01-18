@@ -38,7 +38,6 @@ function App() {
     const sections = [];
     fetchContentful().then(entries => {
       entries.forEach(entry => {
-        // console.log(entry);
         if(entry.sys.contentType.sys.id==="product" && entry.fields.active) {
           entry.fields.id = entry.sys.id
           products.push(entry.fields);
@@ -50,11 +49,12 @@ function App() {
       })
       // change order of items in array
       setProducts(products);
+      console.log(sections)
       setSections(sections);
     });
   }, []);
 
-  // youtube video background
+  // expand video to frame so no whitespace
   const iframe = () => {
     return {__html: '<iframe frameborder="0" height="100%" width="100%" src="https://www.youtube.com/embed/Hy3S2coYvo8?controls=0&autoplay=1&loop=1&mute=1" frameborder="0"></iframe>'}
   }

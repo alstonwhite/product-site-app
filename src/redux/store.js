@@ -10,9 +10,7 @@ const store = createStore(
 );
 
 store.subscribe(() => {
-  saveCartState({
-    cart: store.getState().cart
-  });
+  saveCartState({cart: store.getState().cart});
 });
 
 
