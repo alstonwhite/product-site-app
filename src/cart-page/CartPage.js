@@ -36,6 +36,7 @@ const CartPage = ({onUpdate, onRemove}) => {
                         product={product}
                         onUpdate={onUpdate}
                         onRemove={onRemove}
+                        key={product.id}
                     />
                 ))}
             </div>
@@ -54,4 +55,4 @@ const CartPage = ({onUpdate, onRemove}) => {
     );
   };
     
-    export default CartPage;
+export default CartPage;

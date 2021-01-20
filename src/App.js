@@ -49,7 +49,7 @@ function App() {
       })
       // change order of items in array
       setProducts(products);
-      console.log(sections)
+      // console.log(sections)
       setSections(sections);
     });
   }, []);
@@ -63,7 +63,7 @@ function App() {
 
     <Router>
       <div className="App">
-        <div className="background" dangerouslySetInnerHTML={iframe()}></div>
+        {/* <div className="background" dangerouslySetInnerHTML={iframe()}></div> */}
         <Header/>
       <Switch>
           <Route exact path="/">
