@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import CartTile from './CartTile'
 import { useSelector } from "react-redux";
 
-const CartPage = ({onUpdate, onRemove}) => {
+const CartPage = () => {
 
     const stripeToken = 'pk_test_51I5I1BK0xeA3dafDrvWxWV8PlgHI2kx3rDhGLGk1JacUBpmZBp6ZezpfNBNzZNxLpsy78L6xZBleuFPlQSATmEyg00rUE6BtQQ';
     const [stripe, setStripe] = useState(null)
@@ -34,8 +34,6 @@ const CartPage = ({onUpdate, onRemove}) => {
                 {cart.map(product => (
                     <CartTile 
                         product={product}
-                        onUpdate={onUpdate}
-                        onRemove={onRemove}
                         key={product.id}
                     />
                 ))}

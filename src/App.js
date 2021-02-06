@@ -4,7 +4,6 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import './App.css';
 
 import Header from './app-level/Header'
@@ -13,25 +12,10 @@ import ProductPage from './product-page/ProductPage'
 import CartPage from './cart-page/CartPage'
 import fetchContentful from "./fetchContentful";
 
-import { addItemCartR, upDateQtyCartR, removeItemCartR } from './redux/actions';
-
 function App() {
 
   const [products, setProducts] = useState([]);
   const [sections, setSections] = useState([]);
-  const dispatch = useDispatch();
-
-  const addItemCart= (product) => {
-    dispatch(addItemCartR(product));
-  }
-
-  const updateQtyCart = (product, qty) => {
-    dispatch(upDateQtyCartR(product, qty));
-  }
-
-  const removeItemCart = (product) => {
-    dispatch(removeItemCartR(product));
-  }
 
   useEffect(() => {
     const products = [];
@@ -83,15 +67,11 @@ function App() {
             <ProductPage
               products={products}
               sections={sections}
-              onAdd={addItemCart}
             />
             }>
           </Route>
           <Route exact path="/cart">
-            <CartPage
-              onUpdate={updateQtyCart}
-              onRemove={removeItemCart}
-            />
+            <CartPage/>
           </Route>
         </Switch>
       </div>

@@ -5,7 +5,7 @@ import NavBar from '../app-level/NavBar'
 import ProductDetail from './ProductDetail';
 
 
-const ProductPage = ({products, sections, onAdd}) => {
+const ProductPage = ({products, sections}) => {
   
   let params = useParams();
   let product = products.find(p => p.id === params.id);
@@ -17,14 +17,9 @@ const ProductPage = ({products, sections, onAdd}) => {
       />
       {product && <ProductDetail 
         product={product}
-        onAdd={onAdd}
       />}
-      {/* <ProductDetail 
-        product={product}
-        onAdd={onAdd}
-      /> */}
     </div>
   );
 };
   
-  export default ProductPage;
+export default ProductPage;
