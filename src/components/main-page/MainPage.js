@@ -1,6 +1,6 @@
 import React from 'react';
 
-import NavBar from '../app-level/NavBar'
+import NavBar from '../NavBar'
 import ProductGrid from './ProductGrid'
 
 const MainPage = ({products, sections}) => {

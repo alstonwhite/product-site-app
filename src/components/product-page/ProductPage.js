@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from "react-router-dom";
 
-import NavBar from '../app-level/NavBar'
+import NavBar from '../NavBar'
 import ProductDetail from './ProductDetail';
 
 

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
 import { useDispatch } from "react-redux";
-import { addItemCartR } from '../redux/actions';
+import { addItemCartR } from '../../redux/actions';
 
-import logo from '../logo.svg';
+import logo from '../../assets/particle-logo2.jpeg';
 
 const ProductDetail = ({product}) => {
 

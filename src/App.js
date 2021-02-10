@@ -6,12 +6,12 @@ import {
 } from "react-router-dom";
 import './App.css';
 
-import Header from './app-level/Header'
-import MainPage from './main-page/MainPage'
-import ProductPage from './product-page/ProductPage'
-import CartPage from './cart-page/CartPage'
-import OrderSuccess from './success-page/OrderSuccess'
-import fetchContentful from "./fetchContentful";
+import Header from './components/Header'
+import MainPage from './components/main-page/MainPage'
+import ProductPage from './components/product-page/ProductPage'
+import CartPage from './components/cart-page/CartPage'
+import OrderSuccess from './components/success-page/OrderSuccess'
+import fetchContentful from "./utils/fetchContentful";
 
 function App() {
 

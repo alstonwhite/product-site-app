@@ -27,7 +27,7 @@
 }
 
 .background-img {
-  background-image: url(particle-logo2.jpeg);
+  background-image: url(assets/particle-logo2.jpeg);
   opacity: 0.6;
   position: fixed; 
   z-index: -99; 
@@ -131,7 +131,6 @@ h1 {
 }
 
 .product-detail {
-  /* border: 1px solid red; */
   padding: 40px;
   grid-area: main-content;
   

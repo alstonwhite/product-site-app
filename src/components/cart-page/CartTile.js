@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
-import { upDateQtyCartR, removeItemCartR } from '../redux/actions';
+import { upDateQtyCartR, removeItemCartR } from '../../redux/actions';
 
-import logo from '../logo.svg';
+import logo from '../../assets/particle-logo2.jpeg';
 
 const CartTile = ({product}) => {
 
