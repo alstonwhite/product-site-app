@@ -30,7 +30,9 @@ const NavBar = ({sections}) => {
           <Link to="/" className = "nav__item">All Products</Link>
         </li>
         {sections && sections.map(section => (
-          <li>
+          <li
+            key={section.id}
+          >
             <Link
                 to={"/category/"+section.slug}
                 className = "nav__item"

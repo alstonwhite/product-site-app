@@ -22,7 +22,7 @@ const CartPage = () => {
                 quantity: item.quantity
             })),
             mode: 'payment',
-            successUrl: 'http://localhost:3000',
+            successUrl: 'http://localhost:3000/order-confirm',
             cancelUrl: 'http://localhost:3000',
         })
     }
@@ -51,6 +51,6 @@ const CartPage = () => {
             </div>
         </div>
     );
-  };
+};
     
 export default CartPage;

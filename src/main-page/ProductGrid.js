@@ -20,10 +20,12 @@ const ProductGrid = ({products}) => {
               product.productSection.fields.slug === filter &&
               <ProductTile 
                   product = {product}
+                  key={product.id}
               />))
             : products && products.map(product => (
               <ProductTile 
                   product = {product}
+                  key={product.id}
               />
           ))}
       </div>

@@ -1,4 +1,4 @@
-import { CART_ADD, CART_UPDATE, CART_REMOVE } from './actionTypes';
+import { CART_ADD, CART_UPDATE, CART_REMOVE, CART_CLEAR } from './actionTypes';
 
 
 export const addItemCartR = product => (
@@ -22,5 +22,12 @@ export const removeItemCartR = product => (
     {
         type: CART_REMOVE,
         payload: product
+    }
+);
+
+export const clearCartR = () => (
+    {
+        type: CART_CLEAR
+
     }
 );

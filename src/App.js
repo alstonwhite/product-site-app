@@ -10,6 +10,7 @@ import Header from './app-level/Header'
 import MainPage from './main-page/MainPage'
 import ProductPage from './product-page/ProductPage'
 import CartPage from './cart-page/CartPage'
+import OrderSuccess from './success-page/OrderSuccess'
 import fetchContentful from "./fetchContentful";
 
 function App() {
@@ -31,14 +32,12 @@ function App() {
           sections.push(entry.fields);
         }
       })
-      // change order of items in array
       setProducts(products);
-      // console.log(sections)
       setSections(sections);
     });
   }, []);
 
-  // expand video to frame so no whitespace
+  // expand video to frame so no whitespace, figure out loop + youtube-y parts on load 
   const iframe = () => {
     return {__html: '<iframe frameborder="0" height="100%" width="100%" src="https://www.youtube.com/embed/Hy3S2coYvo8?controls=0&autoplay=1&loop=1&mute=1" frameborder="0"></iframe>'}
   }
@@ -47,6 +46,8 @@ function App() {
 
     <Router>
       <div className="App">
+        {/* check if  mobile for vid vs img */}
+        <div className="background-img"></div>
         {/* <div className="background" dangerouslySetInnerHTML={iframe()}></div> */}
         <Header/>
       <Switch>
@@ -72,6 +73,9 @@ function App() {
           </Route>
           <Route exact path="/cart">
             <CartPage/>
+          </Route>
+          <Route exact path="/order-confirm">
+            <OrderSuccess/>
           </Route>
         </Switch>
       </div>

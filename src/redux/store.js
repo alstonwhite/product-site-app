@@ -1,6 +1,6 @@
 import { createStore } from 'redux'
 import rootReducer from './reducers/cart'
-import { loadCartState, saveCartState } from '../cookies';
+import { loadCartState, saveCartState } from '../localStorage';
 
 const persistedState = loadCartState();
 
