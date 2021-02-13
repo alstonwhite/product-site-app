@@ -1,8 +1,8 @@
-## product-site-app
+# product-site-app
 
 A web store for Particle Brand apparel. This project was build using Create React App, details for scripts to run the app from the original Create React App documentation included below.
 
-# Technologies used
+## Technologies used
 - [Contentful](https://www.contentful.com/)
 - [Stripe](https://stripe.com/)
 
