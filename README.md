@@ -1,4 +1,14 @@
-# Getting Started with Create React App
+## product-site-app
+
+A web store for Particle Brand apparel. This project was build using Create React App, details for scripts to run the app from the original Create React App documentation included below.
+
+# Technologies used
+- [Contentful](https://www.contentful.com/)
+- [Stripe](https://stripe.com/)
+
+---
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
