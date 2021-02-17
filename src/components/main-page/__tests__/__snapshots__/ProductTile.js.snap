@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  class="product-tile"
+  data-testid="product-tile"
+  id="product-tile"
+>
+  <a
+    class="product-tile__content"
+    href="/product/0"
+  >
+    <img
+      alt="logo"
+      class="product-tile__img"
+      src="1"
+    />
+    <div
+      class="product-tile__name"
+    >
+      Product 1
+    </div>
+    <div
+      class="product-tile__price"
+    >
+      <span>
+        $
+      </span>
+      5
+    </div>
+  </a>
+</div>
+`;

@@ -20,8 +20,10 @@ const CartTile = ({product}) => {
     }
   }
 
+  // note: src={product.image1 ? product.image1.fields.file.url : logo} renders 'logo' as placeholder if Contentful product does not have image
+
   return (
-    <div className="cart-tile" id="cart-tile">
+    <div className="cart-tile" id="cart-tile" data-testid="cart-tile">
       <Link className="cart-tile__content" to={`/product/${product.id}`}>  
         <img alt='logo' className='cart-tile__content__img' src={product.image1 ? product.image1.fields.file.url : logo}/>
         <div className="cart-tile__content__name">{product.title}</div>  
@@ -50,4 +52,4 @@ const CartTile = ({product}) => {
   );
 };
   
-  export default CartTile;
+export default CartTile;

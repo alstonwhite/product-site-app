@@ -1,57 +1,61 @@
 import React from 'react'
-import {render, renderIntoDocument, cleanup} from 'react-testing-library'
-import CartPage from '../CartTile'
+import { cleanup, fireEvent, screen } from '@testing-library/react'
+import CartTile from '../CartTile'
+import { testCartProduct } from '../../../testUtils/mockData'
+import { renderWithRouter } from '../../../testUtils/testUtils'
 
-// renders proper image/title/price of item 
-// calls onUpdate when quantity input changed
-// calls onRemove when remove button clicke
-// onUpdate edge case --> make sure input validated, what if value blank or negative?
 
-// afterEach(cleanup)
+afterEach(cleanup)
 
-// test('calls onUpdate with the product and value when input updated with valid string', () => {
-//     // how to mock out cart items / work with Redux?
-//     const cart = [];
-//     const product = {}
-//     const onUpdate = jest.fn()
-//     const onRemove = jest.fn()
-//     const {getByText} = renderIntoDocument(
-//         <CartTile
-//             product={product}
-//             onUpdate={onUpdate}
-//             onRemove={onRemove}
-//       />,
-//     )
+const mockDispatch = jest.fn();
+jest.mock('react-redux', () => ({
+    useDispatch: () => mockDispatch
+}));
+
+test('calls onUpdate with the product and value when input updated with positive int', () => {
+    renderWithRouter(<CartTile product={testCartProduct[0]}/>, {path: "/cart", route: "/cart"})
+
+    screen.getByDisplayValue(1).focus();
+    fireEvent.change(screen.getByDisplayValue(1), {target: {value: '2'}})
+    screen.getByText('X').focus();
+
+    expect(mockDispatch).toHaveBeenCalledTimes(1)
+    expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'CART_UPDATE',
+        payload: {
+            product: testCartProduct[0],
+            quantity: '2'
+        }
+    })
+})
+
+test('calls onRemove with the product and value when input updated with 0', () => {
+    renderWithRouter(<CartTile product={testCartProduct[0]}/>, {path: "/cart", route: "/cart"})
   
-//     // get input -- create test class?
-//     // getByText('X').click()
+    screen.getByDisplayValue(1).focus();
+    fireEvent.change(screen.getByDisplayValue(1), {target: {value: '0'}})
+    screen.getByText('X').focus();
 
-//     expect(onUpdate).toHaveBeenCalledTimes(1)
-//     expect(onUpdate).toHaveBeenCalledWith
+    expect(mockDispatch).toHaveBeenCalledTimes(1)
+    expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'CART_REMOVE',
+        payload: testCartProduct[0]
+    })
+})
 
-//   })
+test('calls onRemove with the product when button clicked', () => {
+    renderWithRouter(<CartTile product={testCartProduct[0]}/>, {path: "/cart", route: "/cart"})
 
-//   test('calls onRemove with the product when button clicked', () => {
-//     // how to mock out cart items / work with Redux?
-//     const cart = [];
-//     const product = {}
-//     const onUpdate = jest.fn()
-//     const onRemove = jest.fn()
-//     const {getByText} = renderIntoDocument(
-//         <CartTile
-//             product={product}
-//             onUpdate={onUpdate}
-//             onRemove={onRemove}
-//       />,
-//     )
+    fireEvent.click(screen.getByText('X'))
   
-//     getByText('X').click()
+    expect(mockDispatch).toHaveBeenCalledTimes(1)
+    expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'CART_REMOVE',
+        payload: testCartProduct[0]
+    })
+})
   
-//     expect(onRemove).toHaveBeenCalledTimes(1)
-//     expect(onRemove).toHaveBeenCalledWith(product)
-//   })
-  
-//   test('snapshot', () => {
-//     const {container} = render(<CartTile />)
-//     expect(container.firstChild).toMatchSnapshot()
-//   })
+test('snapshot', () => {
+    const {container} = renderWithRouter(<CartTile product={testCartProduct[0]}/>, {path: "/cart", route: "/cart"})
+    expect(container.firstChild).toMatchSnapshot()
+})

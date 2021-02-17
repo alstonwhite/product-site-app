@@ -22,7 +22,9 @@ const NavBar = ({sections}) => {
         <span className="close">x Menu</span>
       </button>
       <Link to="/cart" className = "nav__cart-content btn">
-        <div className = "nav__cart-items">{`Cart: ${cartItems} items`}</div>
+        <div className = "nav__cart-items">
+          {cartItems === 1 ? `Cart: ${cartItems} item` : `Cart: ${cartItems} items`}
+        </div>
         <div className = "nav__cart-value">{` $${cartValue}`}</div>
       </Link>
       <ul>
@@ -32,6 +34,7 @@ const NavBar = ({sections}) => {
         {sections && sections.map(section => (
           <li
             key={section.id}
+            data-testid="nav-section"
           >
             <Link
                 to={"/category/"+section.slug}

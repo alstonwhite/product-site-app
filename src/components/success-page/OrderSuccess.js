@@ -10,6 +10,7 @@ const OrderSuccess = () => {
     
     return (
         <div className="success-page" id="success-page">
+            <div className="success-page__spacer"></div>
             <h2>Your order has been placed!</h2>
         </div>
     );

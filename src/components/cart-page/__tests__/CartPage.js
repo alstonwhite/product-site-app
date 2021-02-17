@@ -1,35 +1,65 @@
 import React from 'react'
-import {render, renderIntoDocument, cleanup} from 'react-testing-library'
+import { cleanup, fireEvent, screen } from '@testing-library/react'
 import CartPage from '../CartPage'
+import { testProduct } from '../../../testUtils/mockData'
+import { renderWithRouter } from '../../../testUtils/testUtils'
 
-// calls checkout when button clicked
-// edge case --> checkout call when no items are in the cart? what should CartPage display when empty? (blank or message?)
-// renders proper number of cartTiles based on cart
-// calculates and displays proper cart value
 
-// afterEach(cleanup)
+afterEach(cleanup)
 
-// test('calls checkout when button clicked', () => {
-//     // how to mock out cart items / work with Redux?
-//     const cart = [];
-//     const checkout = jest.fn()
-//     const onUpdate = jest.fn()
-//     const onRemove = jest.fn()
-//     const {getByText} = renderIntoDocument(
-//         <CartPage
-//             onUpdate={onUpdate}
-//             onRemove={onRemove}
-//       />,
-//     )
+jest.mock('react-redux', () => {
+    return {
+    ...jest.requireActual('react-redux'),
+    // cart initializes with item 'testCartProduct' -- hardcoded bc import out of scope 
+    useSelector: () => 
+    [{
+        id: 0,
+        image1: {fields: {file: {url: "1"}}},
+        image2: {fields: {file: {url: "2"}}},
+        image3: {fields: {file: {url: "3"}}},
+        price: 5,
+        title: "Product 1",
+        description: "Description",
+        productSection: {fields: {slug: "section1"}},
+        active: true,
+        quantity: 1
+    }],
+    useDispatch: jest.fn()
+    }
+});
+
+test('renders proper cart tiles', () => {
+    renderWithRouter(<CartPage/>, {path: "/cart", route: "/cart"})
+    
+    expect(screen.getAllByTestId('cart-tile')).toHaveLength(1)
+})
+
+// mocked checkout call not triggering
+test('calls checkout when button clicked', () => {
+    const mockCheckout = jest.fn();
+    jest.mock('../../../utils/checkoutStripe', () => ({
+        ...jest.requireActual('../../../utils/checkoutStripe'),
+        checkout: () => mockCheckout
+    }));
+    renderWithRouter(<CartPage/>, {path: "/cart", route: "/cart"})
   
-//     getByText('submit').click()
+    fireEvent.click(screen.getByText('Checkout'))
   
-//     expect(checkout).toHaveBeenCalledTimes(1)
-//     // cart isn't passed into checkout fx as a param, can't test that checkout was called with below
-//     // expect(checkout).toHaveBeenCalledWith()
-//   })
-  
-//   test('snapshot', () => {
-//     const {container} = render(<CartPage />)
-//     expect(container.firstChild).toMatchSnapshot()
-//   })
+    expect(mockCheckout).toHaveBeenCalledTimes(1)
+})
+
+test('calculates and displays cart value', () => {
+  const mockCheckout = jest.fn();
+  jest.mock('../../../utils/checkoutStripe', () => ({
+      ...jest.requireActual('../../../utils/checkoutStripe'),
+      checkout: () => mockCheckout
+  }));
+  renderWithRouter(<CartPage/>, {path: "/cart", route: "/cart"})
+
+  expect(screen.getByText(testProduct.price)).toBeInTheDocument()
+})
+
+test('snapshot', () => {
+  const {container} = renderWithRouter(<CartPage/>, {path: "/cart", route: "/cart"})
+  expect(container.firstChild).toMatchSnapshot()
+})

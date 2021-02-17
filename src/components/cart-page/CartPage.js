@@ -2,10 +2,10 @@ import React, {useState, useEffect} from 'react';
 
 import CartTile from './CartTile'
 import { useSelector } from "react-redux";
+import { stripeToken, checkout } from '../../utils/checkoutStripe'
 
 const CartPage = () => {
 
-    const stripeToken = 'pk_test_51I5I1BK0xeA3dafDrvWxWV8PlgHI2kx3rDhGLGk1JacUBpmZBp6ZezpfNBNzZNxLpsy78L6xZBleuFPlQSATmEyg00rUE6BtQQ';
     const [stripe, setStripe] = useState(null)
 
     const cart = useSelector(state => state.cart); 
@@ -14,18 +14,6 @@ const CartPage = () => {
     useEffect(() => {
         if (window.Stripe) setStripe(window.Stripe(stripeToken))
     }, [stripeToken])
-
-    const checkout = () => {
-        stripe.redirectToCheckout({
-            lineItems: cart.map(item => ({
-                price: item.stripePrice,
-                quantity: item.quantity
-            })),
-            mode: 'payment',
-            successUrl: 'http://localhost:3000/order-confirm',
-            cancelUrl: 'http://localhost:3000',
-        })
-    }
 
     return (
         <div className="cart-page" id="cart-page">
@@ -44,7 +32,7 @@ const CartPage = () => {
                 </div>
                 <button
                     className ="cart-page__footer__checkout btn"
-                    onClick={checkout}
+                    onClick={() => checkout(stripe, cart)}
                 >
                     Checkout
                 </button>

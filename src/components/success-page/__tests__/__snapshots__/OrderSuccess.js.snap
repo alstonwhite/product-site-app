@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  class="success-page"
+  id="success-page"
+>
+  <div
+    class="success-page__spacer"
+  />
+  <h2>
+    Your order has been placed!
+  </h2>
+</div>
+`;

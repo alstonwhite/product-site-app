@@ -5,6 +5,8 @@ import { addItemCartR } from '../../redux/actions';
 
 import logo from '../../assets/particle-logo2.jpeg';
 
+// note: src={product.image1 ? product.image1.fields.file.url : logo} renders 'logo' as placeholder if Contentful product does not have image
+
 const ProductDetail = ({product}) => {
 
     const dispatch = useDispatch();
@@ -15,7 +17,7 @@ const ProductDetail = ({product}) => {
     return (
     <div className="product-detail" id="product-detail">
         <div className='product-detail__img-gallery'>
-            <img alt='logo' className="product-detail__img-main" src={mainImg}/>
+            <img alt='logo' className="product-detail__img-main" data-testid="imgMain" src={mainImg}/>
             <img 
                 alt='logo' 
                 className="product-detail__img-thumb1" 
@@ -25,6 +27,7 @@ const ProductDetail = ({product}) => {
             <img 
                 alt='logo' 
                 className="product-detail__img-thumb2" 
+                data-testid="img2"
                 src={product.image1 ? product.image2.fields.file.url : logo}
                 onClick={()=>setMainImg(product.image1 ? product.image2.fields.file.url : logo)}
             />

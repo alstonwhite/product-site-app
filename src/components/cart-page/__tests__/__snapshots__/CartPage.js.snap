@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  class="cart-page"
+  id="cart-page"
+>
+  <h1>
+    Cart
+  </h1>
+  <div
+    class="cart-grid__items"
+  >
+    <div
+      class="cart-tile"
+      data-testid="cart-tile"
+      id="cart-tile"
+    >
+      <a
+        class="cart-tile__content"
+        href="/product/0"
+      >
+        <img
+          alt="logo"
+          class="cart-tile__content__img"
+          src="1"
+        />
+        <div
+          class="cart-tile__content__name"
+        >
+          Product 1
+        </div>
+        <div
+          class="cart-tile__content__price"
+        >
+          <span>
+            $
+          </span>
+          5
+        </div>
+      </a>
+      <div
+        class="cart-tile__action"
+      >
+        <input
+          class="cart-tile__action__qty"
+          min="0"
+          step="1"
+          type="number"
+          value="1"
+        />
+        <button
+          class="cart-tile__action__remove btn"
+        >
+          X
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    class="cart-page__footer"
+  >
+    <div
+      class="cart-page__footer__value"
+    >
+      Total: $5
+    </div>
+    <button
+      class="cart-page__footer__checkout btn"
+    >
+      Checkout
+    </button>
+  </div>
+</div>
+`;

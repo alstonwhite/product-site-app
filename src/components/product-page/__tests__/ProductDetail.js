@@ -1,31 +1,38 @@
 import React from 'react'
-import {render, renderIntoDocument, cleanup} from 'react-testing-library'
+import { render, cleanup, fireEvent, screen } from '@testing-library/react'
 import ProductDetail from '../ProductDetail'
+import { testProduct } from '../../../testUtils/mockData'
 
-// test image gallery -- setMainImg clicked and renders properly
-// add cart works properly
 
-// afterEach(cleanup)
+afterEach(cleanup)
 
-// test('calls add to cart when button clicked', () => {
-//     // how to mock out cart items / work with Redux?
-//     const cart = [];
-//     const product = {}
-//     const onAdd = jest.fn()
-//     const {getByText} = renderIntoDocument(
-//         <ProductDetail
-//             product={product}
-//             onAdd={onAdd}
-//       />,
-//     )
+const mockDispatch = jest.fn();
+jest.mock('react-redux', () => ({
+    useDispatch: () => mockDispatch
+}));
+
+test('calls add to cart when button clicked', () => {
+    render(<ProductDetail product={testProduct}/>)
   
-//     getByText('add to cart').click()
+    fireEvent.click(screen.getByText('Add to Cart'))
   
-//     expect(onAdd).toHaveBeenCalledTimes(1)
-//     expect(checkout).toHaveBeenCalledWith(product)
-//   })
+    expect(mockDispatch).toHaveBeenCalledTimes(1)
+    expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'CART_ADD',
+        payload: testProduct
+    })
+})
+
+test('image gallery updates when new img clicked', () => {
+    render(<ProductDetail product={testProduct}/>)
   
-// test('snapshot', () => {
-//     const {container} = render(<ProductDetail />)
-//     expect(container.firstChild).toMatchSnapshot()
-// })
+    fireEvent.click(screen.getByTestId('img2'))
+
+    expect(screen.getByTestId('imgMain').src).toEqual(screen.getByTestId('img2').src)
+})
+  
+test('snapshot', () => {
+    const {container} = render(<ProductDetail product={testProduct}/>)
+
+    expect(container.firstChild).toMatchSnapshot()
+})

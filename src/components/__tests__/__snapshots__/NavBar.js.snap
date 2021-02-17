@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<div
+  class="nav"
+>
+  <button
+    aria-controls="nav-list"
+    aria-expanded="false"
+    class="nav-hamburger btn"
+  >
+    <span
+      class="open"
+    >
+      ☰ Menu
+    </span>
+    <span
+      class="close"
+    >
+      x Menu
+    </span>
+  </button>
+  <a
+    class="nav__cart-content btn"
+    href="/cart"
+  >
+    <div
+      class="nav__cart-items"
+    >
+      Cart: 1 item
+    </div>
+    <div
+      class="nav__cart-value"
+    >
+       $5
+    </div>
+  </a>
+  <ul>
+    <li>
+      <a
+        class="nav__item"
+        href="/"
+      >
+        All Products
+      </a>
+    </li>
+    <li
+      data-testid="nav-section"
+    >
+      <a
+        class="nav__item"
+        href="/category/section1"
+      >
+        Section 1
+      </a>
+    </li>
+    <li
+      data-testid="nav-section"
+    >
+      <a
+        class="nav__item"
+        href="/category/section2"
+      >
+        Section 2
+      </a>
+    </li>
+  </ul>
+</div>
+`;
