@@ -3,6 +3,7 @@ import { cleanup, fireEvent, screen } from '@testing-library/react'
 import CartPage from '../CartPage'
 import { testProduct } from '../../../testUtils/mockData'
 import { renderWithRouter } from '../../../testUtils/testUtils'
+import { checkout as mockCheckout } from '../../../utils/checkoutStripe'
 
 
 afterEach(cleanup)
@@ -28,19 +29,15 @@ jest.mock('react-redux', () => {
     }
 });
 
+jest.mock('../../../utils/checkoutStripe');
+
 test('renders proper cart tiles', () => {
     renderWithRouter(<CartPage/>, {path: "/cart", route: "/cart"})
     
     expect(screen.getAllByTestId('cart-tile')).toHaveLength(1)
 })
 
-// mocked checkout call not triggering
 test('calls checkout when button clicked', () => {
-    const mockCheckout = jest.fn();
-    jest.mock('../../../utils/checkoutStripe', () => ({
-        ...jest.requireActual('../../../utils/checkoutStripe'),
-        checkout: () => mockCheckout
-    }));
     renderWithRouter(<CartPage/>, {path: "/cart", route: "/cart"})
   
     fireEvent.click(screen.getByText('Checkout'))
@@ -49,11 +46,6 @@ test('calls checkout when button clicked', () => {
 })
 
 test('calculates and displays cart value', () => {
-  const mockCheckout = jest.fn();
-  jest.mock('../../../utils/checkoutStripe', () => ({
-      ...jest.requireActual('../../../utils/checkoutStripe'),
-      checkout: () => mockCheckout
-  }));
   renderWithRouter(<CartPage/>, {path: "/cart", route: "/cart"})
 
   expect(screen.getByText(testProduct.price)).toBeInTheDocument()
