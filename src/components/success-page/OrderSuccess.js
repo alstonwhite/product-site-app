@@ -6,7 +6,7 @@ import { clearCartR } from '../../redux/actions';
 const OrderSuccess = () => {
 
     const dispatch = useDispatch();
-    useEffect(() => dispatch(clearCartR()), []);
+    useEffect(() => dispatch(clearCartR()));
     
     return (
         <div className="success-page" id="success-page">

@@ -13,7 +13,7 @@ const CartPage = () => {
 
     useEffect(() => {
         if (window.Stripe) setStripe(window.Stripe(stripeToken))
-    }, [stripeToken])
+    }, [])
 
     return (
         <div className="cart-page" id="cart-page">

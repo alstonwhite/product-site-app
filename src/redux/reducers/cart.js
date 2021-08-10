@@ -2,7 +2,7 @@ import { CART_ADD, CART_UPDATE, CART_REMOVE, CART_CLEAR } from '../actionTypes';
 
 const initState = {cart: []};
 
-export default (state = initState, action) => {
+const rootReducer = (state = initState, action) => {
     switch (action.type){
         case CART_ADD:
             if (state.cart.find(x => x.id === action.payload.id)) {
@@ -24,3 +24,5 @@ export default (state = initState, action) => {
             return state;
     }
 };
+
+export default rootReducer;
